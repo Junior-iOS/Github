@@ -23,6 +23,8 @@
 		14531C092A1F19E100E0BA6D /* NetworkProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C082A1F19E100E0BA6D /* NetworkProviderProtocol.swift */; };
 		14531C0B2A1F1A4700E0BA6D /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C0A2A1F1A4700E0BA6D /* UserListViewModel.swift */; };
 		14531C0D2A1F1D0C00E0BA6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C0C2A1F1D0C00E0BA6D /* User.swift */; };
+		146861A32A2145E100737D3B /* RepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146861A22A2145E100737D3B /* RepositoriesView.swift */; };
+		146861A52A21460E00737D3B /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146861A42A21460E00737D3B /* RepositoriesTableViewCell.swift */; };
 		14D9C71D2A1F302000BE2CD5 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9C71C2A1F302000BE2CD5 /* UserDetail.swift */; };
 		14D9C71F2A1FD77300BE2CD5 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9C71E2A1FD77300BE2CD5 /* UserListView.swift */; };
 		14D9C7212A1FD79500BE2CD5 /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9C7202A1FD79500BE2CD5 /* UserListTableViewCell.swift */; };
@@ -75,6 +77,8 @@
 		14531C082A1F19E100E0BA6D /* NetworkProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProviderProtocol.swift; sourceTree = "<group>"; };
 		14531C0A2A1F1A4700E0BA6D /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		14531C0C2A1F1D0C00E0BA6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		146861A22A2145E100737D3B /* RepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesView.swift; sourceTree = "<group>"; };
+		146861A42A21460E00737D3B /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		14D9C71C2A1F302000BE2CD5 /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		14D9C71E2A1FD77300BE2CD5 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		14D9C7202A1FD79500BE2CD5 /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 			children = (
 				14D9C72A2A1FF6D400BE2CD5 /* User List */,
 				14D9C72B2A1FF6DC00BE2CD5 /* User Detail */,
+				146861A12A2145C800737D3B /* Repositories */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +253,15 @@
 				14D9C7262A1FD80B00BE2CD5 /* UIViewController+Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		146861A12A2145C800737D3B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				146861A22A2145E100737D3B /* RepositoriesView.swift */,
+				146861A42A21460E00737D3B /* RepositoriesTableViewCell.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		14D9C72A2A1FF6D400BE2CD5 /* User List */ = {
@@ -301,7 +315,7 @@
 				14531BC22A1F0C7500E0BA6D /* Sources */,
 				14531BC32A1F0C7500E0BA6D /* Frameworks */,
 				14531BC42A1F0C7500E0BA6D /* Resources */,
-				98B0002814C8A626DC4FEEEE /* [CP] Embed Pods Frameworks */,
+				1A91ECD81509DC8190AD806B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -421,6 +435,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1A91ECD81509DC8190AD806B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		38A753E8C341C01812F7EA71 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,23 +518,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		98B0002814C8A626DC4FEEEE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Github/Pods-Github-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D71C077C3B49A76BFBAAE2CC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +545,7 @@
 				14D9C7292A1FF33F00BE2CD5 /* UserDetailViewController.swift in Sources */,
 				14D9C7272A1FD80B00BE2CD5 /* UIViewController+Extension.swift in Sources */,
 				14D9C72D2A1FF6F200BE2CD5 /* UserDetailView.swift in Sources */,
+				146861A52A21460E00737D3B /* RepositoriesTableViewCell.swift in Sources */,
 				14D9C7252A1FD7EA00BE2CD5 /* UITableView+Extensions.swift in Sources */,
 				14D9C7232A1FD7C100BE2CD5 /* UIView+Extensions.swift in Sources */,
 				14531BCE2A1F0C7500E0BA6D /* UserListViewController.swift in Sources */,
@@ -546,6 +561,7 @@
 				14D9C71F2A1FD77300BE2CD5 /* UserListView.swift in Sources */,
 				14531C052A1F19A900E0BA6D /* NetworkProvider.swift in Sources */,
 				14531C0D2A1F1D0C00E0BA6D /* User.swift in Sources */,
+				146861A32A2145E100737D3B /* RepositoriesView.swift in Sources */,
 				14531C092A1F19E100E0BA6D /* NetworkProviderProtocol.swift in Sources */,
 				14D9C7332A21415000BE2CD5 /* RepositoriesViewController.swift in Sources */,
 				14D9C71D2A1F302000BE2CD5 /* UserDetail.swift in Sources */,
