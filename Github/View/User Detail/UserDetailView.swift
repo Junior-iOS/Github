@@ -200,8 +200,7 @@ class UserDetailView: UIView {
 
     func setupConstraints() {
         addSubviews(backgroundView, userImage)
-        backgroundView.addSubviews(mainVStack,
-                                   reposButton)
+        backgroundView.addSubviews(mainVStack, reposButton)
 
         NSLayoutConstraint.activate([
             backgroundView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),

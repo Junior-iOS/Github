@@ -27,6 +27,7 @@ class UserDetailViewController: UIViewController {
     init(viewModel: UserDetailViewModel = UserDetailViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     @available(*, unavailable)
@@ -41,9 +42,18 @@ class UserDetailViewController: UIViewController {
     }
 }
 
-// MARK: - UserViewDetail Delegate
+// MARK: - UserDetailView Delegate
 extension UserDetailViewController: UserDetailViewDelegate {
     func didTapSeeRepos(from user: User) {
         viewModel.fetchRepos(from: user)
+    }
+}
+
+// MARK: - UserDetailViewModel Delegate
+extension UserDetailViewController: UserDetailViewModelDelegate {
+    func didSelect(_ repos: [Repository]) {
+        let vc = RepositoriesViewController()
+        vc.repos = repos
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

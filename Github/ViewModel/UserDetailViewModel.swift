@@ -8,8 +8,15 @@
 import Foundation
 import UIKit
 
+protocol UserDetailViewModelDelegate: AnyObject {
+    func didSelect(_ repos: [Repository])
+}
+
 final class UserDetailViewModel: NSObject {
     private let service: NetworkProviderProtocol
+    weak var delegate: UserDetailViewModelDelegate?
+    
+    private var repos: [Repository]?
     
     init(service: NetworkProviderProtocol = NetworkProvider()) {
         self.service = service
@@ -20,11 +27,11 @@ final class UserDetailViewModel: NSObject {
         let resource = Resource<[Repository]>(url: url)
         
         service.load(resource: resource) { [weak self] result in
-//            guard let self else { return }
+            guard let self else { return }
             
             switch result {
             case .success(let repos):
-                print(repos)
+                delegate?.didSelect(repos)
             case .failure(let error):
                 print(error.localizedDescription)
             }

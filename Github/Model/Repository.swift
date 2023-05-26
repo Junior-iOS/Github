@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 struct Repository: Codable {
-    let name: String
-    let description: String
-    let stars: Int
-    let forks: Int
-    let owner: Owner
+    let name: String?
+    let description: String?
+    let stars: Int?
+    let forks: Int?
+    let owner: Owner?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -25,8 +25,8 @@ struct Repository: Codable {
 }
 
 struct Owner: Codable {
-    let name: String
-    let avatar: String
+    let name: String?
+    let avatar: String?
     
     enum CodingKeys: String, CodingKey {
         case name = "login"

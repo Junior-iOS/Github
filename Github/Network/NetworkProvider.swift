@@ -15,18 +15,17 @@ final class NetworkProvider: NetworkProviderProtocol {
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: resource.url) { data, _, error in
             guard let data = data, error == nil else {
-                completion(.failure(.domainError))
+                completion(.failure(.mappingError))
                 return
             }
             
-            let result = try? JSONDecoder().decode(T.self, from: data)
-            
-            if let result = result {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                do {
+                    let result = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(result))
+                } catch {
+                    completion(.failure(.decodingError))
                 }
-            } else {
-                completion(.failure(.decodingError))
             }
         }.resume()
     }

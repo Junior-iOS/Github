@@ -11,6 +11,7 @@ enum NetworkError: Error {
     case decodingError
     case domainError
     case urlError
+    case mappingError
     
     var localizedDescription: String {
         switch self {
@@ -20,6 +21,8 @@ enum NetworkError: Error {
             return "No data"
         case .urlError:
             return "Failed to read URL"
+        case .mappingError:
+            return "Failed to map the object"
         }
     }
 }
