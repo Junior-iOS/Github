@@ -20,7 +20,7 @@ final class UserDetailViewModel: NSObject {
         let resource = Resource<[Repository]>(url: url)
         
         service.load(resource: resource) { [weak self] result in
-            guard let self else { return }
+//            guard let self else { return }
             
             switch result {
             case .success(let repos):
