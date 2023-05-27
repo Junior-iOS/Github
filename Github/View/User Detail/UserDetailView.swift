@@ -17,6 +17,7 @@ class UserDetailView: UIView {
     private lazy var userImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "user")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = .kImageSize / 2
         imageView.clipsToBounds = true
@@ -42,6 +43,7 @@ class UserDetailView: UIView {
         label.numberOfLines = 0
         label.textColor = .black
         label.textAlignment = .center
+        label.text = "Not found"
         return label
     }()
     
@@ -82,6 +84,7 @@ class UserDetailView: UIView {
         label.numberOfLines = 0
         label.textColor = .black
         label.textAlignment = .center
+        label.text = "?"
         return label
     }()
     
@@ -112,6 +115,7 @@ class UserDetailView: UIView {
         label.numberOfLines = 0
         label.textColor = .black
         label.textAlignment = .center
+        label.text = "?"
         return label
     }()
     
@@ -142,6 +146,7 @@ class UserDetailView: UIView {
         label.numberOfLines = 0
         label.textColor = .black
         label.textAlignment = .center
+        label.text = "?"
         return label
     }()
     

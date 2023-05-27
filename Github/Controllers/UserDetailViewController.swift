@@ -37,6 +37,7 @@ class UserDetailViewController: UIViewController {
     
     private func setup() {
         view.backgroundColor = .secondarySystemBackground
+        navigationItem.title = "Details"
         defaultBackButton()
         userDetailView.delegate = self
     }
@@ -55,5 +56,9 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
         let vc = RepositoriesViewController()
         vc.repos = repos
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didNotLoadRepos(_ error: NetworkError) {
+        AlertManager.show(error, from: self)
     }
 }

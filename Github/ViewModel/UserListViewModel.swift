@@ -10,7 +10,7 @@ import UIKit
 
 protocol UserListViewModelDelegate: AnyObject {
     func didLoadList()
-    func didNotLoadList()
+    func didNotLoadList(_ error: NetworkError)
     func didSelectUser(_ userDetail: UserDetail?)
 }
 
@@ -41,7 +41,7 @@ final class UserListViewModel: NSObject {
             case .success(let users):
                 self.users = users
             case .failure(let error):
-                print(error.localizedDescription)
+                delegate?.didNotLoadList(error)
             }
         }
     }
@@ -59,7 +59,7 @@ final class UserListViewModel: NSObject {
                 self.userDetail = detail
                 self.delegate?.didSelectUser(self.userDetail)
             case .failure(let error):
-                print(error.localizedDescription)
+                delegate?.didNotLoadList(error)
             }
         }
     }

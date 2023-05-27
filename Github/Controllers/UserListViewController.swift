@@ -95,8 +95,8 @@ extension UserListViewController: UserListViewModelDelegate {
         userView.spinner.stopAnimating()
     }
     
-    func didNotLoadList() {
-        print("Deu ruim")
+    func didNotLoadList(_ error: NetworkError) {
+        AlertManager.show(error, from: self)
     }
     
     func didSelectUser(_ userDetail: UserDetail?) {

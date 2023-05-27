@@ -26,6 +26,7 @@ class RepositoriesViewController: UIViewController {
     private func setup() {
         defaultBackButton()
         view.backgroundColor = .systemBackground
+        navigationItem.title = "Repos"
     }
     
     private func setupTable() {

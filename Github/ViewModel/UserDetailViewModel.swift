@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserDetailViewModelDelegate: AnyObject {
     func didSelect(_ repos: [Repository])
+    func didNotLoadRepos(_ error: NetworkError)
 }
 
 final class UserDetailViewModel: NSObject {
@@ -33,7 +34,7 @@ final class UserDetailViewModel: NSObject {
             case .success(let repos):
                 delegate?.didSelect(repos)
             case .failure(let error):
-                print(error.localizedDescription)
+                delegate?.didNotLoadRepos(error)
             }
         }
     }

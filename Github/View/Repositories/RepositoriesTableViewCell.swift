@@ -114,8 +114,6 @@ class RepositoriesTableViewCell: UITableViewCell {
         ownerLabel.text = nil
         starsAmountLabel.text = nil
         forksAmountLabel.text = nil
-//        starsImageView.image = nil
-//        forksImageView.image = nil
     }
     
     private func setupCell() {
