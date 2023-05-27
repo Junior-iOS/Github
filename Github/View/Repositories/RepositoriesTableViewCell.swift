@@ -10,6 +10,7 @@ import SDWebImage
 
 class RepositoriesTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
     private lazy var secureView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -39,7 +40,7 @@ class RepositoriesTableViewCell: UITableViewCell {
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .systemFont(ofSize: .kMargin, weight: .medium)
         label.textColor = .lightGray
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +49,7 @@ class RepositoriesTableViewCell: UITableViewCell {
     
     private lazy var ownerLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = .systemFont(ofSize: .kMargin, weight: .regular)
         label.textColor = .systemGray
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +98,7 @@ class RepositoriesTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -116,54 +118,55 @@ class RepositoriesTableViewCell: UITableViewCell {
         forksAmountLabel.text = nil
     }
     
+    // MARK: - Setup
     private func setupCell() {
         contentView.addSubview(secureView)
         secureView.addSubviews(photoImageView, nameLabel, descriptionLabel, ownerLabel, informationView)
         informationView.addSubviews(starsImageView, starsAmountLabel, forksImageView, forksAmountLabel)
         
         NSLayoutConstraint.activate([
-            secureView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            secureView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            secureView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            secureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            secureView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .kSmallMargin),
+            secureView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .kMediumMargin),
+            secureView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.kMediumMargin),
+            secureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.kSmallMargin),
             
-            photoImageView.topAnchor.constraint(equalTo: secureView.topAnchor, constant: 16),
-            photoImageView.trailingAnchor.constraint(equalTo: secureView.trailingAnchor, constant: -16),
-            photoImageView.widthAnchor.constraint(equalToConstant: 40),
-            photoImageView.heightAnchor.constraint(equalToConstant: 40),
+            photoImageView.topAnchor.constraint(equalTo: secureView.topAnchor, constant: .kMargin),
+            photoImageView.trailingAnchor.constraint(equalTo: secureView.trailingAnchor, constant: -.kMargin),
+            photoImageView.widthAnchor.constraint(equalToConstant: .kimageSize),
+            photoImageView.heightAnchor.constraint(equalToConstant: .kimageSize),
             
-            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor, constant: 2),
-            nameLabel.leadingAnchor.constraint(equalTo: secureView.leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor, constant: .kSmallerMargin),
+            nameLabel.leadingAnchor.constraint(equalTo: secureView.leadingAnchor, constant: .kMargin),
+            nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: -.kMargin),
 
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 6),
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .kSmallMargin),
             descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             
-            ownerLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 6),
+            ownerLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .kSmallMargin),
             ownerLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
             ownerLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
 
-            informationView.topAnchor.constraint(equalTo: ownerLabel.bottomAnchor, constant: 10),
-            informationView.leadingAnchor.constraint(equalTo: secureView.leadingAnchor, constant: 16),
-            informationView.trailingAnchor.constraint(equalTo: secureView.trailingAnchor, constant: -16),
-            informationView.bottomAnchor.constraint(equalTo: secureView.bottomAnchor, constant: -16),
+            informationView.topAnchor.constraint(equalTo: ownerLabel.bottomAnchor, constant: .kInfoTopMargin),
+            informationView.leadingAnchor.constraint(equalTo: secureView.leadingAnchor, constant: .kMargin),
+            informationView.trailingAnchor.constraint(equalTo: secureView.trailingAnchor, constant: -.kMargin),
+            informationView.bottomAnchor.constraint(equalTo: secureView.bottomAnchor, constant: -.kMargin),
 
             starsImageView.topAnchor.constraint(equalTo: informationView.topAnchor),
             starsImageView.leadingAnchor.constraint(equalTo: informationView.leadingAnchor),
-            starsImageView.widthAnchor.constraint(equalToConstant: 16),
-            starsImageView.heightAnchor.constraint(equalToConstant: 16),
+            starsImageView.widthAnchor.constraint(equalToConstant: .kMargin),
+            starsImageView.heightAnchor.constraint(equalToConstant: .kMargin),
             starsImageView.bottomAnchor.constraint(equalTo: informationView.bottomAnchor),
 
-            starsAmountLabel.leadingAnchor.constraint(equalTo: starsImageView.trailingAnchor, constant: 4),
-            starsAmountLabel.centerYAnchor.constraint(equalTo: starsImageView.centerYAnchor, constant: 1),
+            starsAmountLabel.leadingAnchor.constraint(equalTo: starsImageView.trailingAnchor, constant: .kStarForkMargin),
+            starsAmountLabel.centerYAnchor.constraint(equalTo: starsImageView.centerYAnchor, constant: .kStarYAnchor),
 
             forksImageView.topAnchor.constraint(equalTo: informationView.topAnchor),
-            forksImageView.leadingAnchor.constraint(equalTo: starsAmountLabel.trailingAnchor, constant: 16),
-            forksImageView.widthAnchor.constraint(equalToConstant: 16),
-            forksImageView.heightAnchor.constraint(equalToConstant: 16),
+            forksImageView.leadingAnchor.constraint(equalTo: starsAmountLabel.trailingAnchor, constant: .kMargin),
+            forksImageView.widthAnchor.constraint(equalToConstant: .kMargin),
+            forksImageView.heightAnchor.constraint(equalToConstant: .kMargin),
 
-            forksAmountLabel.leadingAnchor.constraint(equalTo: forksImageView.trailingAnchor, constant: 4),
+            forksAmountLabel.leadingAnchor.constraint(equalTo: forksImageView.trailingAnchor, constant: .kStarForkMargin),
             forksAmountLabel.centerYAnchor.constraint(equalTo: forksImageView.centerYAnchor)
         ])
     }
@@ -184,4 +187,16 @@ class RepositoriesTableViewCell: UITableViewCell {
             photoImageView.sd_setImage(with: photoUrl)
         }
     }
+}
+
+// MARK: - Constants
+fileprivate extension CGFloat {
+    static let kStarYAnchor: CGFloat = 1
+    static let kSmallerMargin: CGFloat = 2
+    static let kStarForkMargin: CGFloat = 4
+    static let kSmallMargin: CGFloat = 6
+    static let kMediumMargin: CGFloat = 24
+    static let kInfoTopMargin: CGFloat = 10
+    static let kMargin: CGFloat = 16
+    static let kimageSize: CGFloat = 40
 }

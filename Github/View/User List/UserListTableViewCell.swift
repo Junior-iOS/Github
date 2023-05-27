@@ -10,6 +10,7 @@ import SDWebImage
 
 class UserListTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
     private lazy var cellBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +48,7 @@ class UserListTableViewCell: UITableViewCell {
         return stack
     }()
 
+    // MARK: - Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()

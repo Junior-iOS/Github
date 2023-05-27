@@ -14,6 +14,7 @@ protocol UserDetailViewDelegate: AnyObject {
 
 class UserDetailView: UIView {
     
+    // MARK: - Properties
     private lazy var userImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -191,6 +192,7 @@ class UserDetailView: UIView {
     var userDetail: UserDetail?
     weak var delegate: UserDetailViewDelegate?
 
+    // MARK: - Init
     init(user: User?, userDetail: UserDetail?) {
         super.init(frame: .zero)
         self.user = user
@@ -203,7 +205,8 @@ class UserDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupConstraints() {
+    // MARK: - Private Methods
+    private func setupConstraints() {
         addSubviews(backgroundView, userImage)
         backgroundView.addSubviews(mainVStack, reposButton)
 
