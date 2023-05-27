@@ -17,7 +17,7 @@ class UserDetailView: UIView {
     private lazy var userImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "user")
+        imageView.image = UIImage(named: "github")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = .kImageSize / 2
         imageView.clipsToBounds = true

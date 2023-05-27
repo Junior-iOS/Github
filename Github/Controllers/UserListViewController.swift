@@ -48,6 +48,7 @@ class UserListViewController: UIViewController {
 
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .systemCyan
 
         viewModel.fetchUsers(.searchList())
     }
