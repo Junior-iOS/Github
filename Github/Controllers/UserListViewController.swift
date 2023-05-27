@@ -13,6 +13,7 @@ class UserListViewController: UIViewController {
     let userView = UserListView()
     let viewModel: UserListViewModel
     
+    weak var mainCoordinator: MainCoordinator?
     var user: User?
 
     // MARK: - Life Cycle
@@ -100,9 +101,7 @@ extension UserListViewController: UserListViewModelDelegate {
     }
     
     func didSelectUser(_ userDetail: UserDetail?) {
-        let vc = UserDetailViewController()
-        vc.user = self.user
-        vc.userDetail = userDetail
-        navigationController?.pushViewController(vc, animated: true)
+        guard let user = user, let userDetail = userDetail else { return }
+        mainCoordinator?.routToDetails(user, with: userDetail)
     }
 }

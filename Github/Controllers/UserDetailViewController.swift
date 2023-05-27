@@ -11,8 +11,11 @@ class UserDetailViewController: UIViewController {
     
     var user: User?
     var userDetail: UserDetail?
+    
     private lazy var userDetailView = UserDetailView(user: user, userDetail: userDetail)
     private let viewModel: UserDetailViewModel
+    
+    weak var mainCoordinator: MainCoordinator?
     
     override func loadView() {
         super.loadView()
@@ -53,9 +56,7 @@ extension UserDetailViewController: UserDetailViewDelegate {
 // MARK: - UserDetailViewModel Delegate
 extension UserDetailViewController: UserDetailViewModelDelegate {
     func didSelect(_ repos: [Repository]) {
-        let vc = RepositoriesViewController()
-        vc.repos = repos
-        navigationController?.pushViewController(vc, animated: true)
+        mainCoordinator?.routeToRepos(repos)
     }
     
     func didNotLoadRepos(_ error: NetworkError) {

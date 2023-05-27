@@ -12,6 +12,8 @@ class RepositoriesViewController: UIViewController {
     private let repoView = RepositoriesView()
     var repos: [Repository] = [Repository]()
     
+    weak var mainCoordinator: MainCoordinator?
+    
     override func loadView() {
         super.loadView()
         self.view = repoView
