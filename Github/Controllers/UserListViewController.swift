@@ -89,7 +89,7 @@ extension UserListViewController: UserListViewModelDelegate {
     }
     
     func didNotLoadList(_ error: NetworkError) {
-        AlertManager.show(error, from: self)
+        showAlert(message: error)
     }
     
     func didSelectUser(_ userDetail: UserDetail?) {

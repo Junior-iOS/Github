@@ -17,4 +17,10 @@ extension UIViewController {
                                                            target: target ?? self.navigationController,
                                                            action: action ?? #selector(navigationController?.popViewController(animated:)))
     }
+    
+    func showAlert(message: NetworkError) {
+        let alert = UIAlertController(title: "Ops!", message: message.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
 }

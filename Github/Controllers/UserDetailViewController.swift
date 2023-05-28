@@ -60,6 +60,6 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
     }
     
     func didNotLoadRepos(_ error: NetworkError) {
-        AlertManager.show(error, from: self)
+        showAlert(message: error)
     }
 }
