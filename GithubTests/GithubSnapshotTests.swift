@@ -19,7 +19,7 @@ final class GithubSnapshotTests: QuickSpec {
         describe("Opening the application") {
             context("on success") {
                 it("loads the screen") {
-                    //self.recording = true
+//                    self.recording = true
 
                     sut = UserListViewController()
                     sut.viewDidLoad()
