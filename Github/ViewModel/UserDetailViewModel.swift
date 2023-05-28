@@ -39,3 +39,4 @@ final class UserDetailViewModel: NSObject {
         }
     }
 }
+

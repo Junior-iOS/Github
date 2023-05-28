@@ -43,7 +43,7 @@ class UserListTableViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [userImage, loginLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.spacing = 8
         return stack
     }()
