@@ -31,7 +31,7 @@ final class GithubUserListTests: XCTestCase {
     }
     
     func testFetchUsers() {
-        let endpoint: GithubEndpoint = .searchList()
+        let endpoint: Endpoint = .searchList()
         guard let url = endpoint.url else { return }
         let resource = Resource<[User]>(url: url)
         

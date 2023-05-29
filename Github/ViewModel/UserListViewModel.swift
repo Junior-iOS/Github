@@ -27,7 +27,7 @@ final class UserListViewModel: NSObject {
         self.service = service
     }
     
-    func fetchUsers(_ endpoint: GithubEndpoint) {
+    func fetchUsers(_ endpoint: Endpoint) {
         guard let url = endpoint.url else { return }
         let resource = Resource<[User]>(url: url)
         

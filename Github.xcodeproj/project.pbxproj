@@ -14,7 +14,7 @@
 		14531BD32A1F0C7800E0BA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14531BD22A1F0C7800E0BA6D /* Assets.xcassets */; };
 		14531BD62A1F0C7800E0BA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14531BD42A1F0C7800E0BA6D /* LaunchScreen.storyboard */; };
 		14531BE12A1F0C7800E0BA6D /* GithubRepositoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531BE02A1F0C7800E0BA6D /* GithubRepositoriesTests.swift */; };
-		14531C012A1F16F800E0BA6D /* GithubEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C002A1F16F800E0BA6D /* GithubEndpoint.swift */; };
+		14531C012A1F16F800E0BA6D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C002A1F16F800E0BA6D /* Endpoint.swift */; };
 		14531C032A1F194200E0BA6D /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C022A1F194200E0BA6D /* Bundle+Extensions.swift */; };
 		14531C052A1F19A900E0BA6D /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C042A1F19A900E0BA6D /* NetworkProvider.swift */; };
 		14531C072A1F19C000E0BA6D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14531C062A1F19C000E0BA6D /* NetworkError.swift */; };
@@ -71,7 +71,7 @@
 		14531BD72A1F0C7800E0BA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14531BDC2A1F0C7800E0BA6D /* GithubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14531BE02A1F0C7800E0BA6D /* GithubRepositoriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoriesTests.swift; sourceTree = "<group>"; };
-		14531C002A1F16F800E0BA6D /* GithubEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubEndpoint.swift; sourceTree = "<group>"; };
+		14531C002A1F16F800E0BA6D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		14531C022A1F194200E0BA6D /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		14531C042A1F19A900E0BA6D /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		14531C062A1F19C000E0BA6D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				14F869612A2407E700AEBE89 /* Mock */,
-				14531C002A1F16F800E0BA6D /* GithubEndpoint.swift */,
+				14531C002A1F16F800E0BA6D /* Endpoint.swift */,
 				14531C082A1F19E100E0BA6D /* NetworkProviderProtocol.swift */,
 				14531C042A1F19A900E0BA6D /* NetworkProvider.swift */,
 				14531C062A1F19C000E0BA6D /* NetworkError.swift */,
@@ -554,7 +554,7 @@
 				14531BCA2A1F0C7500E0BA6D /* AppDelegate.swift in Sources */,
 				14531C0B2A1F1A4700E0BA6D /* UserListViewModel.swift in Sources */,
 				14531BCC2A1F0C7500E0BA6D /* SceneDelegate.swift in Sources */,
-				14531C012A1F16F800E0BA6D /* GithubEndpoint.swift in Sources */,
+				14531C012A1F16F800E0BA6D /* Endpoint.swift in Sources */,
 				14D9C71F2A1FD77300BE2CD5 /* UserListView.swift in Sources */,
 				14531C052A1F19A900E0BA6D /* NetworkProvider.swift in Sources */,
 				14531C0D2A1F1D0C00E0BA6D /* User.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct GithubEndpoint {
+struct Endpoint {
     let path: String
     let method: String
 
@@ -19,13 +19,9 @@ struct GithubEndpoint {
         urlComponents.path = path
         return urlComponents.url
     }
-
-//    static func searchList() -> Self {
-//        Self(path: Bundle.main.endpoint, method: "GET")
-//    }
 }
 
-extension GithubEndpoint {
+extension Endpoint {
     static func searchList() -> Self {
         Self(path: Bundle.main.endpoint, method: "GET")
     }
