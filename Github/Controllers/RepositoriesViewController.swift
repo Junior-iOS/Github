@@ -10,7 +10,8 @@ import UIKit
 class RepositoriesViewController: UIViewController {
     
     private let repoView = RepositoriesView()
-    var repos: [Repository] = [Repository]()
+    private let viewModel: RepositoriesViewModel
+    var reposURL = ""
     
     weak var mainCoordinator: MainCoordinator?
     
@@ -23,6 +24,18 @@ class RepositoriesViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupTable()
+        viewModel.fetchRepos(from: reposURL)
+    }
+    
+    init(viewModel: RepositoriesViewModel = RepositoriesViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
     }
     
     private func setup() {
@@ -43,13 +56,26 @@ extension RepositoriesViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repos.count
+        viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(of: RepositoriesTableViewCell.self, for: indexPath) { [weak self] cell in
-            guard let self else { return }
-            cell.configure(viewModel: repos[indexPath.row])
+            guard let self,
+                  let repos = viewModel.repos?[indexPath.row] else { return }
+            cell.configure(viewModel: repos)
         }
+    }
+}
+
+// MARK: - Repositories Delegate
+extension RepositoriesViewController: RepositoriesDelegate {
+    func didLoadRepos() {
+        repoView.spinner.stopAnimating()
+        repoView.tableView.reloadData()
+    }
+    
+    func didNotLoadRepos(_ error: NetworkError) {
+        showAlert(message: error)
     }
 }

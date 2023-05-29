@@ -11,7 +11,6 @@ import UIKit
 protocol UserListViewModelDelegate: AnyObject {
     func didLoadList()
     func didNotLoadList(_ error: NetworkError)
-    func didSelectUser(_ userDetail: UserDetail?)
 }
 
 final class UserListViewModel: NSObject {
@@ -23,8 +22,6 @@ final class UserListViewModel: NSObject {
             self.delegate?.didLoadList()
         }
     }
-    
-    var userDetail: UserDetail?
 
     init(service: NetworkProviderProtocol = NetworkProvider()) {
         self.service = service
@@ -46,22 +43,12 @@ final class UserListViewModel: NSObject {
         }
     }
     
-    func fetchDetail(_ user: User) {
-        guard let userDetail = user.detail,
-              let url = URL(string: userDetail) else { return }
-        let resource = Resource<UserDetail>(url: url)
-        
-        service.load(resource: resource) { [weak self] result in
-            guard let self else { return }
-            
-            switch result {
-            case .success(let detail):
-                self.userDetail = detail
-                self.delegate?.didSelectUser(self.userDetail)
-            case .failure(let error):
-                delegate?.didNotLoadList(error)
-            }
-        }
+    func didSelectUserAt(index: Int) -> User? {
+        return users?[index]
+    }
+    
+    func numberOfRows() -> Int {
+        return users?.count ?? 0
     }
 }
 

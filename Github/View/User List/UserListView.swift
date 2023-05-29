@@ -48,7 +48,7 @@ class UserListView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }

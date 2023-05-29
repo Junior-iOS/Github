@@ -14,7 +14,6 @@ class UserListViewController: UIViewController {
     let viewModel: UserListViewModel
     
     weak var mainCoordinator: MainCoordinator?
-    var user: User?
 
     // MARK: - Life Cycle
     override func loadView() {
@@ -64,13 +63,12 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let user = viewModel.users?[indexPath.row] else { return }
-        self.user = user
-        viewModel.fetchDetail(user)
+        guard let user = viewModel.didSelectUserAt(index: indexPath.row) else { return }
+        mainCoordinator?.routToDetails(user)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.users?.count ?? 0
+        viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,10 +88,5 @@ extension UserListViewController: UserListViewModelDelegate {
     
     func didNotLoadList(_ error: NetworkError) {
         showAlert(message: error)
-    }
-    
-    func didSelectUser(_ userDetail: UserDetail?) {
-        guard let user = user, let userDetail = userDetail else { return }
-        mainCoordinator?.routToDetails(user, with: userDetail)
     }
 }

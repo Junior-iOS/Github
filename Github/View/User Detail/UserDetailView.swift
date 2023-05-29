@@ -193,11 +193,9 @@ class UserDetailView: UIView {
     weak var delegate: UserDetailViewDelegate?
 
     // MARK: - Init
-    init(user: User?, userDetail: UserDetail?) {
+    init(user: User?) {
         super.init(frame: .zero)
         self.user = user
-        self.userDetail = userDetail
-        
         setupConstraints()
     }
 
@@ -236,11 +234,9 @@ class UserDetailView: UIView {
             reposButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.kButtonBottomMargin),
             reposButton.heightAnchor.constraint(equalToConstant: .kButtonHeight)
         ])
-        
-        configureViews()
     }
     
-    private func configureViews() {
+    func configureView(_ userDetail: UserDetail?) {
         guard let image = user?.avatar,
               let url = URL(string: image),
               let name = userDetail?.name,
@@ -268,7 +264,7 @@ class UserDetailView: UIView {
 // MARK: - Constants
 fileprivate extension CGFloat {
     static let kScreenHeight: CGFloat = UIScreen.main.bounds.height
-    static let kImageSize: CGFloat = 300
+    static let kImageSize: CGFloat = 250
     static let kMargin: CGFloat = 20
     static let kButtonHeight: CGFloat = 50
     static let kButtonBottomMargin: CGFloat = 60

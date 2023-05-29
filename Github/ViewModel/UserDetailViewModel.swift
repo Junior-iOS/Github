@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UserDetailViewModelDelegate: AnyObject {
-    func didSelect(_ repos: [Repository])
+    func handleSuccess(with userDetail: UserDetail)
     func didNotLoadRepos(_ error: NetworkError)
 }
 
@@ -18,21 +18,23 @@ final class UserDetailViewModel: NSObject {
     weak var delegate: UserDetailViewModelDelegate?
     
     private var repos: [Repository]?
+    var userDetail: UserDetail?
     
     init(service: NetworkProviderProtocol = NetworkProvider()) {
         self.service = service
     }
     
-    func fetchRepos(from user: User) {
-        guard let repos = user.repos, let url = URL(string: repos) else { return }
-        let resource = Resource<[Repository]>(url: url)
+    func fetchDetail(_ user: User) {
+        guard let userDetail = user.detail,
+              let url = URL(string: userDetail) else { return }
+        let resource = Resource<UserDetail>(url: url)
         
         service.load(resource: resource) { [weak self] result in
             guard let self else { return }
             
             switch result {
-            case .success(let repos):
-                delegate?.didSelect(repos)
+            case .success(let detail):
+                self.delegate?.handleSuccess(with: detail)
             case .failure(let error):
                 delegate?.didNotLoadRepos(error)
             }

@@ -17,18 +17,17 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(userListViewController, animated: true)
     }
     
-    func routToDetails(_ user: User, with detail: UserDetail) {
+    func routToDetails(_ user: User) {
         let vc = UserDetailViewController()
         vc.mainCoordinator = self
         vc.user = user
-        vc.userDetail = detail
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func routeToRepos(_ repos: [Repository]) {
+    func routeToRepos(_ repos: String) {
         let vc = RepositoriesViewController()
         vc.mainCoordinator = self
-        vc.repos = repos
+        vc.reposURL = repos
         navigationController.pushViewController(vc, animated: true)
     }
 }

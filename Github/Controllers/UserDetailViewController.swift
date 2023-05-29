@@ -10,9 +10,8 @@ import UIKit
 class UserDetailViewController: UIViewController {
     
     var user: User?
-    var userDetail: UserDetail?
     
-    private lazy var userDetailView = UserDetailView(user: user, userDetail: userDetail)
+    private lazy var userDetailView = UserDetailView(user: user)
     private let viewModel: UserDetailViewModel
     
     weak var mainCoordinator: MainCoordinator?
@@ -25,6 +24,8 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        guard let user = user else { return }
+        viewModel.fetchDetail(user)
     }
     
     init(viewModel: UserDetailViewModel = UserDetailViewModel()) {
@@ -49,14 +50,14 @@ class UserDetailViewController: UIViewController {
 // MARK: - UserDetailView Delegate
 extension UserDetailViewController: UserDetailViewDelegate {
     func didTapSeeRepos(from user: User) {
-        viewModel.fetchRepos(from: user)
+        mainCoordinator?.routeToRepos(user.repos ?? "")
     }
 }
 
 // MARK: - UserDetailViewModel Delegate
 extension UserDetailViewController: UserDetailViewModelDelegate {
-    func didSelect(_ repos: [Repository]) {
-        mainCoordinator?.routeToRepos(repos)
+    func handleSuccess(with userDetail: UserDetail) {
+        userDetailView.configureView(userDetail)
     }
     
     func didNotLoadRepos(_ error: NetworkError) {
