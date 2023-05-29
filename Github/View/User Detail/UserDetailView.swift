@@ -62,7 +62,7 @@ class UserDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [nameLabel, loginLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.spacing = 8
         return stack
     }()
@@ -93,7 +93,7 @@ class UserDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [followersLabel, followersCountLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.spacing = 8
         return stack
     }()
@@ -124,7 +124,7 @@ class UserDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [followingLabel, followingCountLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.spacing = 8
         return stack
     }()
@@ -155,7 +155,7 @@ class UserDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [publicRepoLabel, publicReposCountLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.spacing = 8
         return stack
     }()
@@ -173,7 +173,7 @@ class UserDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [nameLoginVStack, followHStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         stack.spacing = 16
         return stack
     }()

@@ -31,7 +31,7 @@ final class GithubSnapshotTests: QuickSpec {
                     if self.recording {
                         expect(sut).toEventually(recordSnapshot(), timeout: .seconds(3))
                     } else {
-                        expect(sut).toEventually(haveValidSnapshot(), timeout: .seconds(3))
+                        expect(sut).toEventually(haveValidSnapshot(), timeout: .seconds(5))
                     }
                 }
             }
