@@ -17,9 +17,6 @@ final class UserDetailViewModel: NSObject {
     private let service: NetworkProviderProtocol
     weak var delegate: UserDetailViewModelDelegate?
     
-    private var repos: [Repository]?
-    var userDetail: UserDetail?
-    
     init(service: NetworkProviderProtocol = NetworkProvider()) {
         self.service = service
     }
