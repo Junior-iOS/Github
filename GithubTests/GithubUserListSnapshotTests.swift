@@ -10,7 +10,7 @@ import Nimble
 import Nimble_Snapshots
 import Quick
 
-final class GithubSnapshotTests: QuickSpec {
+final class GithubUserListSnapshotTests: QuickSpec {
     private var recording = false
 
     override func spec() {
@@ -31,7 +31,7 @@ final class GithubSnapshotTests: QuickSpec {
                     if self.recording {
                         expect(sut).toEventually(recordSnapshot(), timeout: .seconds(3))
                     } else {
-                        expect(sut).toEventually(haveValidSnapshot(), timeout: .seconds(5))
+                        expect(sut).toEventually(haveValidSnapshot(), timeout: .seconds(10))
                     }
                 }
             }

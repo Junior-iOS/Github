@@ -21,3 +21,12 @@ struct User: Codable {
         case repos = "repos_url"
     }
 }
+
+extension User: Equatable {
+    public static func == (lhs: User, rhs: User) -> Bool {
+        if lhs.avatar == rhs.avatar && lhs.detail == rhs.detail && lhs.login == rhs.login && lhs.repos == rhs.repos {
+            return true
+        }
+        return false
+    }
+}

@@ -1,14 +1,14 @@
 //
-//  GithubTests.swift
+//  GithubUserListTests.swift
 //  GithubTests
 //
-//  Created by NJ Development on 25/05/23.
+//  Created by NJ Development on 28/05/23.
 //
 
 import XCTest
 @testable import Github
 
-final class GithubTests: XCTestCase {
+final class GithubUserListTests: XCTestCase {
 
     private var mockService: NetworkProviderMock!
     private var sut: UserListViewModel!
@@ -38,11 +38,14 @@ final class GithubTests: XCTestCase {
         mockService.load(resource: resource) { result in
             switch result {
             case .success(let data):
+                self.sut.users = data
                 XCTAssertNotNil(data)
             default:
                 XCTFail()
             }
         }
+        
+        XCTAssertEqual(user, sut.users?[0])
     }
     
     func testFetchUsersFailed() {
@@ -60,56 +63,11 @@ final class GithubTests: XCTestCase {
         }
     }
     
-    func testFetchUsersDetails() {
-        guard let userDetail = user.detail,
-              let url = URL(string: userDetail) else { return }
-        let resource = Resource<UserDetail>(url: url)
-        
-        mockService.load(resource: resource) { result in
-            switch result {
-            case .success(let data):
-                XCTAssertNotNil(data)
-            default:
-                XCTFail()
-            }
-        }
-    }
-    
-    func testFetchRepos() {
-        guard let repos = user.repos, let url = URL(string: repos) else { return }
-        let resource = Resource<[Repository]>(url: url)
-        
-        mockService.load(resource: resource) { result in
-            switch result {
-            case .success(let data):
-                XCTAssertNotNil(data)
-            default:
-                XCTFail()
-            }
-        }
-    }
-    
-    func testFetchReposFailed() {
-        let repos: String? = "https://api.github.com/users/mojombo/repo"
-        
-        guard let repos = repos,
-              let url = URL(string: repos) else { return }
-        let resource = Resource<[Repository]>(url: url)
-        
-        mockService.isSuccess = false
-        mockService.load(resource: resource) { result in
-            switch result {
-            case .failure(let error):
-                XCTAssertNotNil(error)
-            default:
-                XCTFail()
-            }
-        }
-    }
-}
+    func testDidSelectUser() {
+        let viewModel = user
+        let selectedUser = sut.didSelectUserAt(index: 0)
 
-extension XCTestCase {
-    enum Timeout {
-        static var value = 30.0
+        guard let firstUser = selectedUser else { return }
+        XCTAssertEqual(viewModel, firstUser)
     }
 }

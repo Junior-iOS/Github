@@ -1,39 +1,63 @@
 //
-//  GithubRepositoriesTests.swift
+//  GithubTests.swift
 //  GithubTests
 //
-//  Created by NJ Development on 28/05/23.
+//  Created by NJ Development on 25/05/23.
 //
 
+import XCTest
 @testable import Github
-import Nimble
-import Nimble_Snapshots
-import Quick
 
-final class GithubRepositoriesTests: QuickSpec {
-    private var recording = false
+final class GithubRepositoriesTests: XCTestCase {
 
-    override func spec() {
-        var sut: RepositoriesViewController!
+    private var mockService: NetworkProviderMock!
+    private var sut: RepositoriesViewModel!
+    
+    private var user = User(login: "mojombo",
+                            avatar: "https://avatars.githubusercontent.com/u/1?v=4",
+                            detail: "https://api.github.com/users/mojombo",
+                            repos: "https://api.github.com/users/mojombo/repos")
 
-        describe("Opening the application") {
-            context("on success") {
-                it("loads the screen") {
-//                    self.recording = true
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        mockService = NetworkProviderMock()
+        sut = RepositoriesViewModel(service: mockService)
+    }
 
-                    sut = RepositoriesViewController()
-                    sut.viewDidLoad()
-
-                    sut.view.translatesAutoresizingMaskIntoConstraints = false
-                    sut.view.widthAnchor.constraint(equalToConstant: 500).isActive = true
-                    sut.view.heightAnchor.constraint(equalToConstant: 1_000).isActive = true
-
-                    if self.recording {
-                        expect(sut).toEventually(recordSnapshot(), timeout: .seconds(3))
-                    } else {
-                        expect(sut).toEventually(haveValidSnapshot(), timeout: .seconds(3))
-                    }
-                }
+    override func tearDownWithError() throws {
+        mockService = nil
+        sut = nil
+        try super.tearDownWithError()
+    }
+    
+    func testFetchRepos() {
+        guard let repos = user.repos, let url = URL(string: repos) else { return }
+        let resource = Resource<[Repository]>(url: url)
+        
+        mockService.load(resource: resource) { result in
+            switch result {
+            case .success(let data):
+                XCTAssertNotNil(data)
+            default:
+                XCTFail()
+            }
+        }
+    }
+    
+    func testFetchReposFailed() {
+        let repos: String? = "https://api.github.com/users/mojombo/repo"
+        
+        guard let repos = repos,
+              let url = URL(string: repos) else { return }
+        let resource = Resource<[Repository]>(url: url)
+        
+        mockService.isSuccess = false
+        mockService.load(resource: resource) { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            default:
+                XCTFail()
             }
         }
     }
