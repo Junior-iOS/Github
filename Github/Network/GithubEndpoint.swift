@@ -20,6 +20,12 @@ struct GithubEndpoint {
         return urlComponents.url
     }
 
+//    static func searchList() -> Self {
+//        Self(path: Bundle.main.endpoint, method: "GET")
+//    }
+}
+
+extension GithubEndpoint {
     static func searchList() -> Self {
         Self(path: Bundle.main.endpoint, method: "GET")
     }

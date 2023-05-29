@@ -42,6 +42,8 @@ final class GithubRepositoriesTests: XCTestCase {
                 XCTFail()
             }
         }
+        
+        sut.fetchRepos(from: repos)
     }
     
     func testFetchReposFailed() {
@@ -60,5 +62,12 @@ final class GithubRepositoriesTests: XCTestCase {
                 XCTFail()
             }
         }
+        
+        sut.fetchRepos(from: repos)
+    }
+    
+    func testNumberOfRows() {
+        let rows = sut.numberOfRows()
+        XCTAssertNotNil(rows)
     }
 }

@@ -43,5 +43,7 @@ final class GithubUserDetailsTests: XCTestCase {
                 XCTFail()
             }
         }
+        
+        sut.fetchDetail(user)
     }
 }

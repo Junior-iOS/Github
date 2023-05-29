@@ -45,6 +45,7 @@ final class GithubUserListTests: XCTestCase {
             }
         }
         
+        sut.fetchUsers(.searchList())
         XCTAssertEqual(user, sut.users?[0])
     }
     
@@ -61,6 +62,9 @@ final class GithubUserListTests: XCTestCase {
                 XCTFail()
             }
         }
+        
+        sut.fetchUsers(.searchList())
+        XCTAssertNil(sut.users?[0])
     }
     
     func testDidSelectUser() {

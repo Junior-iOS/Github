@@ -178,15 +178,8 @@
 		14531BDF2A1F0C7800E0BA6D /* GithubTests */ = {
 			isa = PBXGroup;
 			children = (
-				146DAA022A24496B00F3B7F5 /* GithubUserListTests.swift */,
-				146DAA042A24506300F3B7F5 /* GithubUserDetailsTests.swift */,
-				14531BE02A1F0C7800E0BA6D /* GithubRepositoriesTests.swift */,
-				146861F22A23BAC800737D3B /* GithubRequestErrorTests.swift */,
-				1494E0862A23BBE5006C489F /* GithubUserListSnapshotTests.swift */,
-				1494E0882A23BD64006C489F /* GithubUserListTableViewCellSnapshotTests.swift */,
-				1494E08A2A23BD8D006C489F /* GithubUserDetailSnapshotTests.swift */,
-				1494E08C2A23BDB6006C489F /* GithubRepositoriesSnapshotTests.swift */,
-				1494E08E2A23BDC6006C489F /* GithubRepositoriesTableViewCellTests.swift */,
+				146DAA062A2467E600F3B7F5 /* Unit Tests */,
+				146DAA072A2467F800F3B7F5 /* Snapshot Tests */,
 			);
 			path = GithubTests;
 			sourceTree = "<group>";
@@ -281,6 +274,29 @@
 				146861ED2A21AD4A00737D3B /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		146DAA062A2467E600F3B7F5 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				146DAA022A24496B00F3B7F5 /* GithubUserListTests.swift */,
+				146DAA042A24506300F3B7F5 /* GithubUserDetailsTests.swift */,
+				14531BE02A1F0C7800E0BA6D /* GithubRepositoriesTests.swift */,
+				146861F22A23BAC800737D3B /* GithubRequestErrorTests.swift */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		146DAA072A2467F800F3B7F5 /* Snapshot Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1494E0862A23BBE5006C489F /* GithubUserListSnapshotTests.swift */,
+				1494E0882A23BD64006C489F /* GithubUserListTableViewCellSnapshotTests.swift */,
+				1494E08A2A23BD8D006C489F /* GithubUserDetailSnapshotTests.swift */,
+				1494E08C2A23BDB6006C489F /* GithubRepositoriesSnapshotTests.swift */,
+				1494E08E2A23BDC6006C489F /* GithubRepositoriesTableViewCellTests.swift */,
+			);
+			path = "Snapshot Tests";
 			sourceTree = "<group>";
 		};
 		14D9C72A2A1FF6D400BE2CD5 /* User List */ = {
